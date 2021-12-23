@@ -16,7 +16,7 @@ This doc contains a set of guidelines to help you during the contribution proces
 
 * Download and install the latest version of [Git](https://git-scm.com/downloads).
 * Create a [GitHub](https://github.com/join) account
-* Download and install latest version of [Android Studio](https://developer.android.com/studio/downloads/index.html) / [VS Code](https://code.visualstudio.com/download)
+* Download and install latest version of [Android Studio](https://developer.android.com/studio) / [VS Code](https://code.visualstudio.com/download)
 
 ## Project Set Up
 

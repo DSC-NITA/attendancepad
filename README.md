@@ -22,6 +22,8 @@ This doc contains a set of guidelines to help you during the contribution proces
 
 1. Fork [this](https://github.com/DSC-NITA/attendancepad) repository
 
+![Fork the repo](./doc_assets/fork.png)
+
 2. Clone the forked repository
 
 ```bash
@@ -81,6 +83,8 @@ git push -u origin <your_branch_name>
 
 6. To create a pull request, click on `compare and pull requests`. Please ensure you compare your feature branch to the desired branch of the repo you are suppose to make a PR to.
 
+![Compare pull request](./doc_assets/compare_pull.png)
+
 7. Then add an appropriate title and description to your pull request that explains your changes and efforts done.
 
 8. Click on `Create Pull Request`.
@@ -100,4 +104,6 @@ git push -u origin <your_branch_name>
 # Relevant Screenshots/Gifs
 ```
 
-9. Wo-Hoo!! You have made a PR to the attendance-pad app. Sit back and relax while the maintainers review the PR.
+![Create an PR](./doc_assets/create_pr.png)
+
+9. Wo-Hoo!! You have made an PR to the attendance-pad app. Sit back and relax while the maintainers review the PR.

@@ -3,13 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="8dp"
+    android:padding="16dp"
     >
 
     <TextView
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add new Class"
+        android:text="ADD NEW CLASS "
         android:textStyle="bold"
         android:textSize="20sp"
         android:layout_gravity="center_horizontal"
@@ -48,8 +49,7 @@
             android:id="@+id/cancel_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Cancel"
-            />
+            android:text="Cancel" />
         <Button
             android:id="@+id/add_button"
             android:layout_alignParentRight="true"

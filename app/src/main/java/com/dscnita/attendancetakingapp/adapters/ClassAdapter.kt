@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.dscnita.attendancetakingapp.R
 import com.dscnita.attendancetakingapp.StudentActivity
 import com.dscnita.attendancetakingapp.models.ClassItem
+import com.dscnita.attendancetakingapp.models.StudentItem
 
 class ClassAdapter(
     private val context: Context,
@@ -25,11 +26,11 @@ class ClassAdapter(
         val button:Button=view.findViewById(R.id.takeAttendance)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ClassAdapter.ClassViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ClassViewHolder {
         val adapterLayout = LayoutInflater.from(parent.context)
             .inflate(R.layout.class_item, parent, false)
 
-        return ClassAdapter.ClassViewHolder(adapterLayout)
+        return ClassViewHolder(adapterLayout)
     }
 
     override fun onBindViewHolder(holder: ClassViewHolder, position: Int) {

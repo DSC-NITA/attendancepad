@@ -27,27 +27,28 @@ class MainActivity : AppCompatActivity() {
             showDialogBox()
         }
 
-        setToolBar()
-    }
-
-    private fun setToolBar()
-    {
         val recyclerView=binding.recyclerView
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager=LinearLayoutManager(this)
         recyclerView.adapter=ClassAdapter(this,classItems)
 
+        setToolBar()
+    }
+
+    private fun setToolBar()
+    {
         val toolbar=binding.toolbar
         toolbar.toolbarTitle.text="Attendance Pad"
-        toolbar.toolbarSubtitle.visibility=View.INVISIBLE
+        toolbar.toolbarSubtitle.visibility=View.GONE
         toolbar.saveButton.visibility=View.INVISIBLE
         toolbar.backButton.visibility=View.INVISIBLE
+        toolbar.menuButton.visibility=View.GONE
     }
 
     private fun showDialogBox()
     {
         val builder=AlertDialog.Builder(this)
-        val view=LayoutInflater.from(this).inflate(R.layout.class_dialogue,null)
+        val view=LayoutInflater.from(this).inflate(R.layout.class_dialog,null)
         builder.setView(view)
         val dialog=builder.create()
         dialog.show()

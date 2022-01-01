@@ -2,6 +2,7 @@ package com.dscnita.attendancetakingapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.Button
 import android.widget.EditText
@@ -31,8 +32,7 @@ class StudentActivity : AppCompatActivity() {
         val recyclerView=binding.recyclerView
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager=LinearLayoutManager(this)
-        recyclerView.adapter=StudentAdapter(this,studentItems)
-
+        recyclerView.adapter= StudentAdapter(this,studentItems,itemOnClick)
         setToolBar(className,subjectName)
     }
 
@@ -49,6 +49,7 @@ class StudentActivity : AppCompatActivity() {
         toolbar.menuButton.setOnClickListener {
             showAddStudentDialog()
         }
+
     }
 
 
@@ -73,11 +74,21 @@ class StudentActivity : AppCompatActivity() {
         }
     }
 
-        private fun addStudent(view:View)
+    private fun addStudent(view:View)
     {
         val rollNo=view.findViewById<EditText>(R.id.rollNo).text.toString()
         val studentName=view.findViewById<EditText>(R.id.studentName).text.toString()
         studentItems.add(StudentItem(rollNo,studentName))
         binding.recyclerView.adapter?.notifyDataSetChanged()
+    }
+
+
+    private val itemOnClick: (View, Int, Int) -> Unit = { _, position, _ ->
+        val status=studentItems[position].status
+        if(status=="P")
+            studentItems[position].status="A"
+        else
+            studentItems[position].status="P"
+        binding.recyclerView.adapter?.notifyItemChanged(position)
     }
 }

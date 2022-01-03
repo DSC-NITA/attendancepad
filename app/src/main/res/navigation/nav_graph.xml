@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/classFragment">
+
+    <fragment
+        android:id="@+id/classFragment"
+        android:name="com.dscnita.attendancetakingapp.fragments.ClassFragment"
+        android:label="fragment_class"
+        tools:layout="@layout/fragment_class" >
+        <action
+            android:id="@+id/action_classFragment_to_studentFragment"
+            app:destination="@id/studentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/studentFragment"
+        android:name="com.dscnita.attendancetakingapp.fragments.StudentFragment"
+        android:label="fragment_student"
+        tools:layout="@layout/fragment_student" >
+        <argument
+            android:name="className"
+            app:argType="string" />
+        <argument
+            android:name="subjectName"
+            app:argType="string" />
+    </fragment>
+</navigation>

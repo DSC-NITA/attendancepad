@@ -15,12 +15,10 @@ import com.dscnita.attendancetakingapp.models.StudentItem
 class StudentAdapter(
     private val context: Context,
     private val dataset: MutableList<StudentItem>,
-    val itemClickListener: (View, Int, Int) -> Unit
+    private val itemClickListener: (View, Int, Int) -> Unit
 ) : RecyclerView.Adapter<StudentAdapter.StudentViewHolder> (){
 
-    val onItemClick: ((StudentItem) -> Unit)? = null
-
-    inner class StudentViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    class StudentViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val rollNo: TextView =view.findViewById(R.id.rollNo)
         val studentName: TextView =view.findViewById(R.id.studentName)
         val status:TextView=view.findViewById(R.id.status)

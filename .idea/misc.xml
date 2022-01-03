@@ -9,10 +9,12 @@
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/AttendanceTakingapp/app/src/main/res/drawable/ic_baseline_menu_open_24.xml" value="0.19583333333333333" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/AttendanceTakingapp/app/src/main/res/layout/activity_main.xml" value="0.1796875" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/AttendanceTakingapp/app/src/main/res/layout/activity_student.xml" value="0.1796875" />
-        <entry key="..\:/Users/ASUS/AndroidStudioProjects/AttendanceTakingapp/app/src/main/res/layout/class_dialog.xml" value="0.1796875" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/AttendanceTakingapp/app/src/main/res/layout/class_dialog.xml" value="0.22" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/AttendanceTakingapp/app/src/main/res/layout/class_dialogue.xml" value="0.22" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/AttendanceTakingapp/app/src/main/res/layout/class_item.xml" value="0.1796875" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/AttendanceTakingapp/app/src/main/res/layout/dialogue.xml" value="0.1796875" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/AttendanceTakingapp/app/src/main/res/layout/fragment_class.xml" value="0.165625" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/AttendanceTakingapp/app/src/main/res/layout/fragment_student.xml" value="0.165625" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/AttendanceTakingapp/app/src/main/res/layout/student_dialog.xml" value="0.1796875" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/AttendanceTakingapp/app/src/main/res/layout/student_item.xml" value="0.1796875" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/AttendanceTakingapp/app/src/main/res/layout/tool_bar.xml" value="0.22" />

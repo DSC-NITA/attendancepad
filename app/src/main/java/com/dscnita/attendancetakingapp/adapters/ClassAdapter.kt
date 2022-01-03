@@ -1,18 +1,16 @@
 package com.dscnita.attendancetakingapp.adapters
 
 import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
-import androidx.core.content.ContextCompat.startActivity
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.dscnita.attendancetakingapp.R
-import com.dscnita.attendancetakingapp.StudentActivity
+import com.dscnita.attendancetakingapp.fragments.ClassFragmentDirections
 import com.dscnita.attendancetakingapp.models.ClassItem
-import com.dscnita.attendancetakingapp.models.StudentItem
 
 class ClassAdapter(
     private val context: Context,
@@ -20,7 +18,7 @@ class ClassAdapter(
 ) : RecyclerView.Adapter<ClassAdapter.ClassViewHolder> (){
 
 
-    class ClassViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
+    class ClassViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val className: TextView =view.findViewById(R.id.className)
         val subjectName: TextView =view.findViewById(R.id.subjectName)
         val button:Button=view.findViewById(R.id.takeAttendance)
@@ -37,11 +35,8 @@ class ClassAdapter(
         holder.className.text = dataset[position].className
         holder.subjectName.text = dataset[position].subjectName
         holder.button.setOnClickListener {
-            val intent= Intent(context,StudentActivity::class.java)
-            intent.putExtra("className",dataset[position].className)
-            intent.putExtra("subjectName",dataset[position].subjectName)
-            intent.putExtra("position",position)
-            context.startActivity(intent)
+            val action= ClassFragmentDirections.actionClassFragmentToStudentFragment(className = dataset[position].className, subjectName = dataset[position].subjectName)
+            holder.itemView.findNavController().navigate(action)
         }
     }
 

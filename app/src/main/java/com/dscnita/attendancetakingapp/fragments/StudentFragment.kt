@@ -1,38 +1,56 @@
-package com.dscnita.attendancetakingapp
+package com.dscnita.attendancetakingapp.fragments
 
-import androidx.appcompat.app.AppCompatActivity
+import android.app.Activity
 import android.os.Bundle
-import android.util.Log
-import android.view.*
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
-import android.widget.Toolbar
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.dscnita.attendancetakingapp.adapters.ClassAdapter
+import com.dscnita.attendancetakingapp.R
 import com.dscnita.attendancetakingapp.adapters.StudentAdapter
-import com.dscnita.attendancetakingapp.databinding.ActivityStudentBinding
-import com.dscnita.attendancetakingapp.models.ClassItem
+import com.dscnita.attendancetakingapp.databinding.FragmentClassBinding
+import com.dscnita.attendancetakingapp.databinding.FragmentStudentBinding
 import com.dscnita.attendancetakingapp.models.StudentItem
 
-class StudentActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityStudentBinding
+class StudentFragment : Fragment() {
+    private var _binding: FragmentStudentBinding?=null
+    private val binding get()= _binding!!
     private val studentItems = mutableListOf<StudentItem>()
 
+    private lateinit var className:String
+    private lateinit var subjectName:String
+
+    companion object {
+        val CLASSNAME = "className"
+        val SUBJECTNAME="subjectName"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding= ActivityStudentBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        arguments?.let {
+            className=it.getString(CLASSNAME).toString()
+            subjectName=it.getString(SUBJECTNAME).toString()
+        }
+    }
 
-        val intent= intent
-        val className=intent.getStringExtra("className").toString()
-        val subjectName=intent.getStringExtra("subjectName").toString()
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentStudentBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         val recyclerView=binding.recyclerView
         recyclerView.setHasFixedSize(true)
-        recyclerView.layoutManager=LinearLayoutManager(this)
-        recyclerView.adapter= StudentAdapter(this,studentItems,itemOnClick)
+        recyclerView.layoutManager= LinearLayoutManager(requireContext())
+        recyclerView.adapter= StudentAdapter(requireContext(),studentItems,itemOnClick)
         setToolBar(className,subjectName)
     }
 
@@ -43,7 +61,7 @@ class StudentActivity : AppCompatActivity() {
         toolbar.toolbarSubtitle.text=subjectName
 
         toolbar.backButton.setOnClickListener {
-            onBackPressed()
+//            Activity.onBackPressed()
         }
 
         toolbar.menuButton.setOnClickListener {
@@ -52,11 +70,9 @@ class StudentActivity : AppCompatActivity() {
 
     }
 
-
-
     private fun showAddStudentDialog() {
-        val builder= AlertDialog.Builder(this)
-        val view= LayoutInflater.from(this).inflate(R.layout.student_dialog,null)
+        val builder= AlertDialog.Builder(requireContext())
+        val view= LayoutInflater.from(requireContext()).inflate(R.layout.student_dialog,null)
         builder.setView(view)
         val dialog=builder.create()
         dialog.show()
@@ -91,4 +107,5 @@ class StudentActivity : AppCompatActivity() {
             studentItems[position].status="P"
         binding.recyclerView.adapter?.notifyItemChanged(position)
     }
+
 }

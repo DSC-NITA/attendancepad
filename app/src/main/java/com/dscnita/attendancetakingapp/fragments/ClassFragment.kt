@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.dscnita.attendancetakingapp.R
 import com.dscnita.attendancetakingapp.adapters.ClassAdapter
 import com.dscnita.attendancetakingapp.databinding.FragmentClassBinding
-import com.dscnita.attendancetakingapp.models.ClassItem
+import com.dscnita.attendancetakingapp.entities.ClassItem
 
 class ClassFragment : Fragment() {
     private var _binding: FragmentClassBinding?=null

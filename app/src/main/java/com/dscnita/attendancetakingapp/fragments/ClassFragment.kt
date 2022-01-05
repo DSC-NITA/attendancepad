@@ -79,7 +79,7 @@ class ClassFragment : Fragment() {
         val className=view.findViewById<EditText>(R.id.className).text.toString()
         val subjectName=view.findViewById<EditText>(R.id.subjectName).text.toString()
         classItems.add(ClassItem(className,subjectName))
-        binding.recyclerView.adapter?.notifyDataSetChanged()
+        binding.recyclerView.adapter?.notifyItemInserted(classItems.size-1)
     }
 
 }

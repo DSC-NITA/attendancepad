@@ -1,18 +1,17 @@
 package com.dscnita.attendancetakingapp.fragments
 
-import android.app.Activity
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dscnita.attendancetakingapp.R
 import com.dscnita.attendancetakingapp.adapters.StudentAdapter
-import com.dscnita.attendancetakingapp.databinding.FragmentClassBinding
 import com.dscnita.attendancetakingapp.databinding.FragmentStudentBinding
 import com.dscnita.attendancetakingapp.models.StudentItem
 
@@ -61,7 +60,15 @@ class StudentFragment : Fragment() {
         toolbar.toolbarSubtitle.text=subjectName
 
         toolbar.backButton.setOnClickListener {
-//            Activity.onBackPressed()
+            requireActivity()
+                .onBackPressedDispatcher
+                .addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
+                    override fun handleOnBackPressed() {
+                        // we'll add directions to class fragment later
+
+                    }
+                }
+                )
         }
 
         toolbar.menuButton.setOnClickListener {
@@ -95,7 +102,7 @@ class StudentFragment : Fragment() {
         val rollNo=view.findViewById<EditText>(R.id.rollNo).text.toString()
         val studentName=view.findViewById<EditText>(R.id.studentName).text.toString()
         studentItems.add(StudentItem(rollNo,studentName))
-        binding.recyclerView.adapter?.notifyDataSetChanged()
+        binding.recyclerView.adapter?.notifyItemInserted(studentItems.size-1)
     }
 
 

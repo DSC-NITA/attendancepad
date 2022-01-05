@@ -25,5 +25,8 @@
         <argument
             android:name="subjectName"
             app:argType="string" />
+        <action
+            android:id="@+id/action_studentFragment_to_classFragment"
+            app:destination="@id/classFragment" />
     </fragment>
 </navigation>

@@ -9,6 +9,7 @@ import android.widget.EditText
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dscnita.attendancetakingapp.R
 import com.dscnita.attendancetakingapp.adapters.StudentAdapter
@@ -65,7 +66,8 @@ class StudentFragment : Fragment() {
                 .addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
                     override fun handleOnBackPressed() {
                         // we'll add directions to class fragment later
-
+                        val action=StudentFragmentDirections.actionStudentFragmentToClassFragment()
+                        findNavController().navigate(action)
                     }
                 }
                 )

@@ -9,7 +9,7 @@ import com.dscnita.attendancetakingapp.entities.relations.ClassItemWithStudentIt
 @Dao
 interface AttendanceDao {
 
-    @Insert(onConflict = OnConflictStrategy.ABORT)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertClassItem(classItem: ClassItem)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
@@ -27,4 +27,11 @@ interface AttendanceDao {
     @Transaction
     @Query("SELECT * FROM ClassItem where c_id = :c_id")
     fun getClassItemWithStudentItems(c_id: Int): LiveData<List<ClassItemWithStudentItems>>
+
+    @Delete
+    suspend fun deleteClassItem(classItem: ClassItem)
+
+    @Delete
+    suspend fun deleteStudentItem(studentItem: StudentItem)
+
 }

@@ -34,5 +34,13 @@ class AttendanceViewModel(application: Application) : AndroidViewModel(applicati
         repository.updateStudentItem(studentItem)
     }
 
+    fun deleteClassItem(classItem: ClassItem) = viewModelScope.launch(Dispatchers.IO){
+        repository.deleteClassItem(classItem)
+    }
+
+    fun deleteStudentItem(studentItem: StudentItem) = viewModelScope.launch(Dispatchers.IO){
+        repository.deleteStudentItem(studentItem)
+    }
+
     fun getClassItemWithStudentItems(c_id: Int): LiveData<List<ClassItemWithStudentItems>> = repository.getClassItemWithStudentItems(c_id)
 }

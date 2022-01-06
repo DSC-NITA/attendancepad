@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivity() {
 //        })
 //
 //        // 6. insert in StudentItem
-//        viewModel.insertStudentItem(StudentItem(5, "27", "Akshay", true))
+//        viewModel.insertStudentItem(StudentItem(5, "27", "Akshat", true))
 //
 //        // 7. Update in an instance of StudentItem
 //        viewModel.updateStudentItem(3, false)

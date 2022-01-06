@@ -63,7 +63,6 @@ class ClassFragment : Fragment() {
         val toolbar=binding.toolbars
         toolbar.toolbarTitle.text="Attendance Pad"
         toolbar.toolbarSubtitle.visibility=View.GONE
-        toolbar.saveButton.visibility=View.INVISIBLE
         toolbar.backButton.visibility=View.INVISIBLE
         toolbar.menuButton.visibility=View.GONE
     }
@@ -75,6 +74,7 @@ class ClassFragment : Fragment() {
         builder.setView(view)
         val dialog=builder.create()
         dialog.show()
+
 
         val cancelButton=view.findViewById<Button>(R.id.cancel_button)
         val addButton=view.findViewById<Button>(R.id.add_button)

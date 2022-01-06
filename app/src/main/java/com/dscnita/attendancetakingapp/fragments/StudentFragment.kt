@@ -83,16 +83,8 @@ class StudentFragment : Fragment() {
         toolbar.toolbarSubtitle.text=subjectName
 
         toolbar.backButton.setOnClickListener {
-            requireActivity()
-                .onBackPressedDispatcher
-                .addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
-                    override fun handleOnBackPressed() {
-                        // we'll add directions to class fragment later
-                        val action=StudentFragmentDirections.actionStudentFragmentToClassFragment()
-                        findNavController().navigate(action)
-                    }
-                }
-                )
+            val action=StudentFragmentDirections.actionStudentFragmentToClassFragment()
+            findNavController().navigate(action)
         }
 
         toolbar.menuButton.setOnClickListener {

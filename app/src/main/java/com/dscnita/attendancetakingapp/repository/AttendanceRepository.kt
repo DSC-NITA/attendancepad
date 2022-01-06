@@ -17,4 +17,8 @@ class AttendanceRepository(private val dao: AttendanceDao) {
     val allClassItems: LiveData<List<ClassItem>> = dao.getClassItems()
 
     fun getClassItemWithStudentItems(c_id: Int): LiveData<List<ClassItemWithStudentItems>> = dao.getClassItemWithStudentItems(c_id)
+
+    suspend fun deleteClassItem(classItem: ClassItem) = dao.deleteClassItem(classItem)
+
+    suspend fun deleteStudentItem(studentItem: StudentItem) = dao.deleteStudentItem(studentItem)
 }

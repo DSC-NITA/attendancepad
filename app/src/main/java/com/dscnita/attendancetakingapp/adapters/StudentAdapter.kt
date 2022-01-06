@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
@@ -38,10 +39,18 @@ class StudentAdapter(
     override fun onBindViewHolder(holder: StudentViewHolder, position: Int) {
         holder.rollNo.text = dataset[position].rollNo
         holder.studentName.text = dataset[position].name
-        if(dataset[position].status)
-            holder.status.text="P"
-        else
-            holder.status.text="A"
+        if(dataset[position].status) {
+            holder.status.text = "P"
+            holder.rollNo.setTextColor(ContextCompat.getColor(context,R.color.black))
+            holder.studentName.setTextColor(ContextCompat.getColor(context,R.color.black))
+            holder.status.setTextColor(ContextCompat.getColor(context,R.color.black))
+        }
+        else {
+            holder.status.text = "A"
+            holder.rollNo.setTextColor(ContextCompat.getColor(context,R.color.white))
+            holder.studentName.setTextColor(ContextCompat.getColor(context,R.color.white))
+            holder.status.setTextColor(ContextCompat.getColor(context,R.color.white))
+        }
         holder.card.setCardBackgroundColor(getColor(holder.status.text as String))
     }
 

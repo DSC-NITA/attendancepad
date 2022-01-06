@@ -15,8 +15,11 @@ interface AttendanceDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertStudentItem(studentItem: StudentItem)
 
-    @Query("UPDATE StudentItem SET status = :status WHERE s_id = :s_id")
-    suspend fun updateStudentItem(s_id: Int, status: Boolean)
+//    @Query("UPDATE StudentItem SET status = :status WHERE s_id = :s_id")
+//    suspend fun updateStudentItem(s_id: Int, status: Boolean)
+
+    @Update
+    suspend fun updateStudentItem(studentItem: StudentItem)
 
     @Query("SELECT * FROM ClassItem ORDER BY c_id ASC")
     fun getClassItems(): LiveData<List<ClassItem>>

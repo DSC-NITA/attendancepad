@@ -30,8 +30,8 @@ class AttendanceViewModel(application: Application) : AndroidViewModel(applicati
         repository.insertStudentItem(studentItem)
     }
 
-    fun updateStudentItem(s_id: Int, status: Boolean) = viewModelScope.launch(Dispatchers.IO){
-        repository.updateStudentItem(s_id, status)
+    fun updateStudentItem(studentItem: StudentItem) = viewModelScope.launch(Dispatchers.IO){
+        repository.updateStudentItem(studentItem)
     }
 
     fun getClassItemWithStudentItems(c_id: Int): LiveData<List<ClassItemWithStudentItems>> = repository.getClassItemWithStudentItems(c_id)

@@ -2,6 +2,7 @@ package com.dscnita.attendancetakingapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -16,7 +17,7 @@ import com.dscnita.attendancetakingapp.viewModels.AttendanceViewModel
 class MainActivity : AppCompatActivity() {
 
     private lateinit var navController: NavController
-//    lateinit var viewModel: AttendanceViewModel
+    lateinit var viewModel: AttendanceViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,12 +30,13 @@ class MainActivity : AppCompatActivity() {
 
 //        ----------------------------------------- EXAMPLES ----------------------------------------
 //        // 1. initialise viewmodel
-//        viewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(application))[AttendanceViewModel::class.java]
+        viewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(application))[AttendanceViewModel::class.java]
 //
 //        // 2. observing livedata<ClassItem> & updating adapter
-//        viewModel.allClassItems.observe(this, Observer {
+//        viewModel.allClassItems.observe(this,Observer {
 //            it?.let {
-//                // adapterClass.updateClassItems(it)
+//                 //adapterClass.updateClassItems(it)
+////                Toast.makeText(this,"Android very bad",Toast.LENGTH_SHORT).show()
 //            }
 //        })
 //

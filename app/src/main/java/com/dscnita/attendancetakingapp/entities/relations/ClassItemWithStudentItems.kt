@@ -12,5 +12,5 @@ class ClassItemWithStudentItems(
         parentColumn = "c_id",
         entityColumn = "c_id"
     )
-    val studentItems: LiveData<List<StudentItem>>
+    val studentItems: List<StudentItem>
 )

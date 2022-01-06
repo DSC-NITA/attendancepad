@@ -12,7 +12,7 @@ class AttendanceRepository(private val dao: AttendanceDao) {
 
     suspend fun insertStudentItem(studentItem: StudentItem) = dao.insertStudentItem(studentItem)
 
-    suspend fun updateStudentItem(s_id: Int, status: Boolean) = dao.updateStudentItem(s_id, status)
+    suspend fun updateStudentItem(studentItem: StudentItem) = dao.updateStudentItem(studentItem)
 
     val allClassItems: LiveData<List<ClassItem>> = dao.getClassItems()
 

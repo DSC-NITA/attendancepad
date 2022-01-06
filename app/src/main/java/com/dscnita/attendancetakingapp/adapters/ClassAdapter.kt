@@ -35,12 +35,19 @@ class ClassAdapter(
         holder.className.text = dataset[position].className
         holder.subjectName.text = dataset[position].subjectName
         holder.button.setOnClickListener {
-            val action= ClassFragmentDirections.actionClassFragmentToStudentFragment(className = dataset[position].className, subjectName = dataset[position].subjectName)
+            val action= ClassFragmentDirections.actionClassFragmentToStudentFragment(className = dataset[position].className, subjectName = dataset[position].subjectName, classId = dataset[position].c_id)
             holder.itemView.findNavController().navigate(action)
         }
     }
 
     override fun getItemCount(): Int {
         return dataset.size
+    }
+
+    fun updateClassItems(updatedDataset:List<ClassItem>)
+    {
+        dataset.clear()
+        dataset.addAll(updatedDataset)
+        notifyDataSetChanged()
     }
 }

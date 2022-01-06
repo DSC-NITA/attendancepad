@@ -10,6 +10,7 @@ import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.dscnita.attendancetakingapp.R
+import com.dscnita.attendancetakingapp.entities.ClassItem
 import com.dscnita.attendancetakingapp.entities.StudentItem
 
 class StudentAdapter(
@@ -37,7 +38,10 @@ class StudentAdapter(
     override fun onBindViewHolder(holder: StudentViewHolder, position: Int) {
         holder.rollNo.text = dataset[position].rollNo
         holder.studentName.text = dataset[position].name
-        holder.status.text=dataset[position].status
+        if(dataset[position].status)
+            holder.status.text="P"
+        else
+            holder.status.text="A"
         holder.card.setCardBackgroundColor(getColor(holder.status.text as String))
     }
 
@@ -58,5 +62,12 @@ class StudentAdapter(
             Color.parseColor("#"+Integer.toHexString(ContextCompat.getColor(context,R.color.green)))
         } else
             Color.parseColor("#"+Integer.toHexString(ContextCompat.getColor(context,R.color.red)))
+    }
+
+    fun updateStudentItems(updatedDataset:List<StudentItem>)
+    {
+        dataset.clear()
+        dataset.addAll(updatedDataset)
+        notifyDataSetChanged()
     }
 }

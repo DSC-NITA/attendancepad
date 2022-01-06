@@ -10,7 +10,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.dscnita.attendancetakingapp.R
 import com.dscnita.attendancetakingapp.fragments.ClassFragmentDirections
-import com.dscnita.attendancetakingapp.models.ClassItem
+import com.dscnita.attendancetakingapp.entities.ClassItem
 
 class ClassAdapter(
     private val context: Context,

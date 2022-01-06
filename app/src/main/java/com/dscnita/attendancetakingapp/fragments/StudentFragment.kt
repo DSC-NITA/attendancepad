@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.dscnita.attendancetakingapp.R
 import com.dscnita.attendancetakingapp.adapters.StudentAdapter
 import com.dscnita.attendancetakingapp.databinding.FragmentStudentBinding
-import com.dscnita.attendancetakingapp.models.StudentItem
+import com.dscnita.attendancetakingapp.entities.StudentItem
 
 class StudentFragment : Fragment() {
     private var _binding: FragmentStudentBinding?=null

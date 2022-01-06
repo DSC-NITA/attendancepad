@@ -10,7 +10,7 @@ import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.dscnita.attendancetakingapp.R
-import com.dscnita.attendancetakingapp.models.StudentItem
+import com.dscnita.attendancetakingapp.entities.StudentItem
 
 class StudentAdapter(
     private val context: Context,

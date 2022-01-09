@@ -24,7 +24,6 @@ class ClassAdapter(
     inner class ClassViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val className: TextView =view.findViewById(R.id.className)
         val subjectName: TextView =view.findViewById(R.id.subjectName)
-        val button:Button=view.findViewById(R.id.takeAttendance)
         init {
             itemView.setOnClickListener{
                 onItemClick?.invoke(dataset[adapterPosition],adapterPosition)
@@ -46,10 +45,6 @@ class ClassAdapter(
     override fun onBindViewHolder(holder: ClassViewHolder, position: Int) {
         holder.className.text = dataset[position].className
         holder.subjectName.text = dataset[position].subjectName
-        holder.button.setOnClickListener {
-            val action= ClassFragmentDirections.actionClassFragmentToStudentFragment(className = dataset[position].className, subjectName = dataset[position].subjectName, classId = dataset[position].c_id)
-            holder.itemView.findNavController().navigate(action)
-        }
     }
 
     override fun getItemCount(): Int {

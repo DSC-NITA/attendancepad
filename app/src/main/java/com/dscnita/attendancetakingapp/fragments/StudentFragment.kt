@@ -28,7 +28,6 @@ class StudentFragment : Fragment() {
     private val binding get()= _binding!!
     private val studentItems = mutableListOf<StudentItem>()
     lateinit var viewModel: AttendanceViewModel
-
     private lateinit var className:String
     private lateinit var subjectName:String
     private var c_id=0

@@ -1,66 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/cardView"
-    android:layout_width="match_parent"
-    android:padding="8dp"
-    android:layout_height="64sp"
-    android:layout_marginStart="6dp"
-    android:layout_marginEnd="6dp"
-    android:layout_marginTop="6dp"
-    app:cardUseCompatPadding="false"
-    app:cardElevation="0dp"
-    app:cardPreventCornerOverlap="false"
-    app:cardCornerRadius="4dp"
+    app:cardCornerRadius="5dp"
+    android:layout_margin="8dp"
+    android:layout_height="96dp"
     >
 
     <RelativeLayout
-        android:paddingStart="36dp"
+        android:layout_gravity="center_vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        >
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="8dp"
-            android:layout_centerVertical="true"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
             >
 
-            <TextView
-                android:id="@+id/rollNo"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="01"
-                android:textColor="#000000"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/studentName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Student Name"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    />
+
+                <TextView
+                    android:id="@+id/rollNo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Roll no."
+                    android:textSize="15sp"
+                    />
+
+            </LinearLayout>
 
             <TextView
-                android:id="@+id/studentName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="56sp"
-                android:text="Akshat Verma"
-                android:textColor="#000000"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <TextView
+                android:gravity="center"
                 android:id="@+id/status"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_marginLeft="56sp"
-                android:layout_marginRight="36sp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="25dp"
+                android:textStyle="bold"
+                android:textSize="25sp"
                 android:text="P"
-                android:textColor="#000000"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                />
 
-
-        </RelativeLayout>
-
+        </LinearLayout>
 
     </RelativeLayout>
 

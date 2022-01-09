@@ -13,6 +13,8 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dscnita.attendancetakingapp.R
 import com.dscnita.attendancetakingapp.adapters.ClassAdapter
@@ -47,6 +49,14 @@ class ClassFragment : Fragment() {
         recyclerView.layoutManager= LinearLayoutManager(requireContext())
         val adapter=ClassAdapter(requireContext(),classItems)
         recyclerView.adapter= adapter
+
+        adapter.onItemClick={_,position->
+            val action= ClassFragmentDirections.actionClassFragmentToStudentFragment(
+                className = classItems[position].className,
+                subjectName = classItems[position].subjectName,
+                classId = classItems[position].c_id)
+            findNavController().navigate(action)
+        }
 
         adapter.onItemLongClick={_,position->
             MaterialAlertDialogBuilder(requireContext())

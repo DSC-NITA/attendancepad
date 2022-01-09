@@ -1,6 +1,29 @@
-# Attendance-Pad
+## Attendance-Pad
 
-An attendance recorder app for teachers, build for Android using Kotlin. This project is a part of Andoird Study Jams 2021 @ GDSC-NITA.
+An attendance recorder app for teachers, build for Android using Kotlin. This project is a part of Android Study Jams 2021 @ GDSC-NITA.
+
+### Problem Statement
+
+The current system requires teachers to carry huge attendance registers for maintaining the record for attendance, which makes the record making cumbersome and also waster paper. This app aims to eliminate the need to maintain attendance registers and make the process digital.
+
+### Proposed Solution :
+
+The project proposes a "Attendance Pad" to keep track of the attendance of students. The app will support to add multiple classes and add multiple students in a particular class. The app will also store the data locally using SQLite.
+
+### Application Screenshots :
+![Application Screenshots](./doc_assets/app_screenshots.png)
+
+### Functionality & Concepts used :
+* Jetpack Navigation Component: The application has 2 screens, which was implemented using jetpack navigation component, the application is also using the safe args plugin for passing arguments to other fragment. 
+* Constraint Layout : Most of the activities in the app uses a flexible constraint layout, which is easy to handle for different screen sizes. 
+* Recycler View: Both the screens of the application uses a recycler view to show a list of required items. 
+* LiveData & Room Database: The app persists the data using SQLite using the room api. The viewmodel has live data, which makes the data updation smooth. 
+* Simple and easy View Designs: Seperate files for different dialog boxes, most of them using Material Design Guidelines makes the UI for the app smooth.
+
+### Application Link & Future Scope :
+You can access the application from [here](https://drive.google.com/file/d/1UIQFQTDx1yQbl3CJSg2xmuWRD-cn_pB0/view?usp=sharing).
+We have planned to incluce more functionalities like storing the data on the cloud, in case the user's phone is running low on storage, next the functionality to make PDF for the attendance. 
+
 
 # Contribution Guidelines
 
@@ -15,8 +38,8 @@ This doc contains a set of guidelines to help you during the contribution proces
 ## Prerequisites
 
 * Download and install the latest version of [Git](https://git-scm.com/downloads).
-* Create a [GitHub](https://github.com/join) account
-* Download and install latest version of [Android Studio](https://developer.android.com/studio) / [VS Code](https://code.visualstudio.com/download)
+* Create a [GitHub](https://github.com/join) account.
+* Download and install latest version of [Android Studio](https://developer.android.com/studio).
 
 ## Project Set Up
 

@@ -6,34 +6,41 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.dscnita.attendancetakingapp.R
-import com.dscnita.attendancetakingapp.entities.ClassItem
 import com.dscnita.attendancetakingapp.entities.StudentItem
 
 class StudentAdapter(
     private val context: Context,
     private val dataset: MutableList<StudentItem>,
-    private val itemClickListener: (View, Int, Int) -> Unit
 ) : RecyclerView.Adapter<StudentAdapter.StudentViewHolder> (){
 
-    class StudentViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    var onItemClick: ((StudentItem,Int) -> Unit)? = null
+    var onItemLongClick: ((StudentItem,Int) -> Unit)?= null
+
+    inner class StudentViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val rollNo: TextView =view.findViewById(R.id.rollNo)
         val studentName: TextView =view.findViewById(R.id.studentName)
         val status:TextView=view.findViewById(R.id.status)
         val card:CardView=view.findViewById(R.id.cardView)
+        init {
+            itemView.setOnClickListener{
+                onItemClick?.invoke(dataset[adapterPosition],adapterPosition)
+            }
+            itemView.setOnLongClickListener {
+                onItemLongClick?.invoke(dataset[adapterPosition],adapterPosition)
+                return@setOnLongClickListener true
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StudentViewHolder {
         val adapterLayout = LayoutInflater.from(parent.context)
             .inflate(R.layout.student_item, parent, false)
 
-        val studentVH= StudentViewHolder(adapterLayout)
-        studentVH.onClick(itemClickListener)
-        return studentVH
+        return StudentViewHolder(adapterLayout)
     }
 
     override fun onBindViewHolder(holder: StudentViewHolder, position: Int) {
@@ -56,13 +63,6 @@ class StudentAdapter(
 
     override fun getItemCount(): Int {
         return dataset.size
-    }
-
-    private fun <T : RecyclerView.ViewHolder> T. onClick(event: (view: View, position: Int, type: Int) -> Unit): T {
-        itemView.setOnClickListener {
-            event.invoke(it, adapterPosition, itemViewType)
-        }
-        return this
     }
 
     private fun getColor(status:String):Int

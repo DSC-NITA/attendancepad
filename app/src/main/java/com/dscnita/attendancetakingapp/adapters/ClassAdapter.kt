@@ -11,17 +11,29 @@ import androidx.recyclerview.widget.RecyclerView
 import com.dscnita.attendancetakingapp.R
 import com.dscnita.attendancetakingapp.fragments.ClassFragmentDirections
 import com.dscnita.attendancetakingapp.entities.ClassItem
+import com.dscnita.attendancetakingapp.entities.StudentItem
 
 class ClassAdapter(
     private val context: Context,
     private val dataset: MutableList<ClassItem>
 ) : RecyclerView.Adapter<ClassAdapter.ClassViewHolder> (){
 
+    var onItemClick: ((ClassItem, Int) -> Unit)? = null
+    var onItemLongClick: ((ClassItem, Int) -> Unit)?= null
 
-    class ClassViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    inner class ClassViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val className: TextView =view.findViewById(R.id.className)
         val subjectName: TextView =view.findViewById(R.id.subjectName)
         val button:Button=view.findViewById(R.id.takeAttendance)
+        init {
+            itemView.setOnClickListener{
+                onItemClick?.invoke(dataset[adapterPosition],adapterPosition)
+            }
+            itemView.setOnLongClickListener {
+                onItemLongClick?.invoke(dataset[adapterPosition],adapterPosition)
+                return@setOnLongClickListener true
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ClassViewHolder {

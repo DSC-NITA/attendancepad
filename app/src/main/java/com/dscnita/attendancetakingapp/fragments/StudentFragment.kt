@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
@@ -20,6 +21,7 @@ import com.dscnita.attendancetakingapp.databinding.FragmentStudentBinding
 import com.dscnita.attendancetakingapp.entities.StudentItem
 import com.dscnita.attendancetakingapp.entities.relations.ClassItemWithStudentItems
 import com.dscnita.attendancetakingapp.viewModels.AttendanceViewModel
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class StudentFragment : Fragment() {
     private var _binding: FragmentStudentBinding?=null
@@ -59,10 +61,31 @@ class StudentFragment : Fragment() {
         val recyclerView=binding.recyclerView
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager= LinearLayoutManager(requireContext())
-        val adapter=StudentAdapter(requireContext(),studentItems,itemOnClick)
+        val adapter=StudentAdapter(requireContext(),studentItems)
         recyclerView.adapter= adapter
         setToolBar(className,subjectName)
 
+        adapter.onItemLongClick={_,position->
+            MaterialAlertDialogBuilder(requireContext())
+                .setTitle("Delete Student")
+                .setMessage("Are you sure you want to delete entry of ${studentItems[position].name}?")
+                .setNegativeButton("Cancel"){
+                    dialog,_->
+                    dialog.dismiss()
+                }
+                .setPositiveButton("Delete"){
+                    dialog,_->
+                    viewModel.deleteStudentItem(studentItems[position])
+                    dialog.dismiss()
+                }
+                .show()
+        }
+
+        adapter.onItemClick={ _,position->
+            val status=studentItems[position].status
+            studentItems[position].status = !status
+            viewModel.updateStudentItem(studentItems[position])
+        }
 
         viewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(Application()))[AttendanceViewModel::class.java]
 
@@ -119,15 +142,6 @@ class StudentFragment : Fragment() {
         val rollNo=view.findViewById<EditText>(R.id.rollNo).text.toString()
         val studentName=view.findViewById<EditText>(R.id.studentName).text.toString()
         viewModel.insertStudentItem(StudentItem(c_id,rollNo,studentName))
-    }
-
-
-    private val itemOnClick: (View, Int, Int) -> Unit = { _, position, _ ->
-        val s_id=studentItems[position].s_id
-        val status=studentItems[position].status
-        studentItems[position].status = !status
-        viewModel.updateStudentItem(studentItems[position])
-//        binding.recyclerView.adapter?.notifyItemChanged(position)
     }
 
 }

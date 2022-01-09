@@ -19,6 +19,7 @@ import com.dscnita.attendancetakingapp.adapters.ClassAdapter
 import com.dscnita.attendancetakingapp.databinding.FragmentClassBinding
 import com.dscnita.attendancetakingapp.entities.ClassItem
 import com.dscnita.attendancetakingapp.viewModels.AttendanceViewModel
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import java.util.Observer
 
 class ClassFragment : Fragment() {
@@ -46,6 +47,22 @@ class ClassFragment : Fragment() {
         recyclerView.layoutManager= LinearLayoutManager(requireContext())
         val adapter=ClassAdapter(requireContext(),classItems)
         recyclerView.adapter= adapter
+
+        adapter.onItemLongClick={_,position->
+            MaterialAlertDialogBuilder(requireContext())
+                .setTitle("Delete Student")
+                .setMessage("Are you sure you want to delete entry of ${classItems[position].className}?")
+                .setNegativeButton("Cancel"){
+                        dialog,_->
+                    dialog.dismiss()
+                }
+                .setPositiveButton("Delete"){
+                        dialog,_->
+                    viewModel.deleteClassItem(classItems[position])
+                    dialog.dismiss()
+                }
+                .show()
+        }
 
         setToolBar()
 

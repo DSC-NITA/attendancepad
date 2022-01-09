@@ -1,6 +1,5 @@
 package com.dscnita.attendancetakingapp.entities.relations
 
-import androidx.lifecycle.LiveData
 import androidx.room.Embedded
 import androidx.room.Relation
 import com.dscnita.attendancetakingapp.entities.ClassItem

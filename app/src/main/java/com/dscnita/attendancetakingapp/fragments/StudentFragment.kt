@@ -98,6 +98,7 @@ class StudentFragment : Fragment() {
         val view= LayoutInflater.from(requireContext()).inflate(R.layout.student_dialog,null)
         builder.setView(view)
         val dialog=builder.create()
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
         dialog.show()
 
         val cancelButton=view.findViewById<Button>(R.id.cancel_button)

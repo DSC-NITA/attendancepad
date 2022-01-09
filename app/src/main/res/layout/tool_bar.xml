@@ -64,7 +64,6 @@
                 android:layout_centerVertical="true"
                 >
 
-
                 <ImageButton
                     android:id="@+id/menuButton"
                     android:layout_marginStart="8sp"

@@ -1,6 +1,7 @@
 package com.dscnita.attendancetakingapp.fragments
 
 import android.app.Application
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -73,6 +74,7 @@ class ClassFragment : Fragment() {
         val view=LayoutInflater.from(requireContext()).inflate(R.layout.class_dialog,null)
         builder.setView(view)
         val dialog=builder.create()
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
         dialog.show()
 
 

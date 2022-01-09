@@ -60,7 +60,7 @@ class ClassFragment : Fragment() {
 
         adapter.onItemLongClick={_,position->
             MaterialAlertDialogBuilder(requireContext())
-                .setTitle("Delete Student")
+                .setTitle("Delete Class")
                 .setMessage("Are you sure you want to delete entry of ${classItems[position].className}?")
                 .setNegativeButton("Cancel"){
                         dialog,_->
